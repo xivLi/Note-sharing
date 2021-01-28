@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>v-model演示</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div id="example-1">
+      文本：
+      <br>
+      <input v-model="message" placeholder="edit me">
+      <hr>
+    </div>
+
+    <div id="example-2">
+      多行文本：
+      <br>
+      <textarea v-model="message" placeholder="add multiple lines"></textarea>
+      <br>
+      <span>Message is: {{ message }}</span>
+      <hr>
+    </div>
+
+    <div id="example-3">
+      复选框(单个)：
+      <br>
+      <input type="checkbox" id="checkbox" v-model="checked">
+      <label for="checkbox">{{ checked }}</label>
+      <br>
+
+      复选框(多个)：
+      <br>
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames">
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+      <label for="mike">Mike</label>
+      <br>
+      <span>Checked names: {{ checkedNames }}</span>
+      <hr>
+    </div>
+
+    <div id="example-4">
+      单选按钮：
+      <br>
+      <input type="radio" id="one" value="One" v-model="picked">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" value="Two" v-model="picked">
+      <label for="two">Two</label>
+      <br>
+      <span>Picked: {{ picked }}</span>
+      <hr>
+    </div>
+
+    <div id="example-5">
+      选择框(单选)：
+      <br>
+      <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <span>Selected: {{ selected }}</span>
+      <br>
+      选择框(多选)：
+      <select v-model="choosed" multiple style="width: 50px;">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <br>
+      <span>Choosed: {{ choosed }}</span>
+      <hr>
+    </div>
+
+    <input v-model.lazy="msg" />
+    {{msg}}
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        checked: false,
+        checkedNames: ['John'],
+        picked: 'One',
+        selected: 'B',
+        choosed: ['C'],
+        msg: ''
+      }
+    })
+  </script>
+</body>
+
+</html>

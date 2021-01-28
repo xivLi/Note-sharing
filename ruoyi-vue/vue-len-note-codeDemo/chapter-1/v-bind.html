@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>v-bind演示</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <span v-bind:title="tip">鼠标悬停在此处查看效果</span>
+    <br />
+    <span v-bind:title="number * 5">数值型演示</span>
+    <br />
+    <span v-bind:title="isA">布尔型演示</span>
+    <br />
+    <span v-bind:title="'提示：' + tip + ' 数字2的5倍：' + number*5 + ' 布尔值：' + isA">综合演示</span>
+    <br />
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+  </div>
+  <script>
+    let myApp = new Vue({
+      el: "#app",
+      data: {
+        tip: "我是提示, 看到了吗",
+        number: 2,
+        isA: true,
+        isButtonDisabled: false
+      },
+    });
+  </script>
+</body>
+
+</html>

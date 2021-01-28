@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>计算属性演示</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="example">
+    <p>原 message: "{{ message }}"</p>
+    <p>使用表达式得到的 翻转message: "{{ message.split('').reverse().join('') }}"</p>
+    <p>由计算属性得到的 翻转message: "{{ reversedMessage }}"</p>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#example',
+      data: {
+        message: 'Hello'
+      },
+      // computed: {
+      //   // 计算属性的 getter
+      //   reversedMessage() {
+      //     // `this` 指向 vm 实例
+      //     return this.message.split('').reverse().join('')
+      //   }
+      // }
+      computed: {
+        reversedMessage: {
+          get: function () {
+            console.log("get");
+            return this.message.split("").reverse().join("");
+          },
+          set: function (val) {
+            console.log("set");
+            this.message = val;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

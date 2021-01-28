@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>组件插槽</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ex>
+      <ex-title slot="slot-title" :title="title2"></ex-title>
+      <ex-item slot="slot-item" v-for="item2 in items" :item="item2"></ex-item>
+    </ex>
+  </div>
+  <script>
+    Vue.component('ex', {
+      template: `
+      <div>
+        <slot name="slot-title"></slot>
+        <hr />
+        <ul>
+          <slot name="slot-item"></slot>
+        </ul>
+      </div>
+      `
+    });
+    Vue.component('ex-title', {
+      props: ['title'],
+      template: `
+      <span>{{ title }}</span>
+      `
+    });
+    Vue.component('ex-item', {
+      props: ['item'],
+      template: `
+      <li>{{ item }}</li>
+      `
+    });
+    new Vue({
+      el: '#app',
+      data: {
+        title2: '列表',
+        items: ['JAVA', 'VUE', 'LINUX'],
+      },
+    });
+  </script>
+</body>
+
+</html>
